@@ -43,7 +43,3 @@
 {% macro bigquery__type_array() %}
    ARRAY<string>
 {% endmacro %}
-
-{% macro clickhouse__type_array() %}
-   Array
-{% endmacro %}
