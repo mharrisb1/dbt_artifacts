@@ -241,8 +241,12 @@
             {% endif %}
 
             {{ model.execution_time }}, {# total_node_runtime #}
-            toInt64('{{ model.adapter_response.rows_affected }}'),
-            toInt64('{{ model.adapter_response.bytes_processed }}'),
+
+            {% set rows_affected = model.adapter_response.rows_affected %}
+            {% if rows_affected == '' %}
+                {% set rows_affected = '0' %}
+            {% endif %}
+            toInt64('{{ rows_affected }}'),
             '{{ model.node.config.materialized }}', {# materialization #}
             '{{ model.node.schema }}', {# schema #}
             '{{ model.node.name }}' {# name #}
