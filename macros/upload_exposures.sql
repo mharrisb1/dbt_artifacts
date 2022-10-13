@@ -85,7 +85,7 @@
                     '{{ run_started_at }}', {# run_started_at #}
                     '{{ exposure.name | replace("'","\\'") }}', {# name #}
                     '{{ exposure.type }}', {# type #}
-                    parse_json('{{ tojson(exposure.owner) | replace("'","\\'") }}'), {# owner #}
+                    {{ parse_json('{{ tojson(exposure.owner) | replace("'","\\'") }}') }}, {# owner #}
                     '{{ exposure.maturity }}', {# maturity #}
                     '{{ exposure.original_file_path | replace('\\', '\\\\') }}', {# path #}
                     """{{ exposure.description | replace("'","\\'") }}""", {# description #}

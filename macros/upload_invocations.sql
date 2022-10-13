@@ -136,7 +136,7 @@
             {% for env_variable in var('env_vars') %}
                 {% do env_vars_dict.update({env_variable: env_var(env_variable)}) %}
             {% endfor %}
-            parse_json('{{ tojson(env_vars_dict) }}'), {# env_vars #}
+            {{ parse_json('{{ tojson(env_vars_dict) }}') }}, {# env_vars #}
         {% else %}
             null, {# env_vars #}
         {% endif %}

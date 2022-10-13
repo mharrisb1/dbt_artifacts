@@ -87,7 +87,7 @@
                     '{{ source.name }}', {# name #}
                     '{{ source.identifier }}', {# identifier #}
                     '{{ source.loaded_at_field | replace("'","\\'") }}', {# loaded_at_field #}
-                    parse_json('{{ tojson(source.freshness) | replace("'","\\'") }}')  {# freshness #}
+                    {{ parse_json('{{ tojson(source.freshness) | replace("'","\\'") }}') }}  {# freshness #}
                 )
                 {%- if not loop.last %},{%- endif %}
             {%- endfor %}
