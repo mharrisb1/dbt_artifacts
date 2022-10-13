@@ -241,8 +241,8 @@
             {% endif %}
 
             {{ model.execution_time }}, {# total_node_runtime #}
-            safe_cast('{{ model.adapter_response.rows_affected }}' as int64),
-            safe_cast('{{ model.adapter_response.bytes_processed }}' as int64),
+            toInt64('{{ model.adapter_response.rows_affected }}'),
+            toInt64('{{ model.adapter_response.bytes_processed }}'),
             '{{ model.node.config.materialized }}', {# materialization #}
             '{{ model.node.schema }}', {# schema #}
             '{{ model.node.name }}' {# name #}
