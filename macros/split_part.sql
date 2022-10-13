@@ -7,5 +7,6 @@
 {%- endmacro %}
 
 {% macro clickhouse__split_part(string_text, delimiter_text, part_number) -%}
-    splitByString('{{ delimiter_text | replace("''", "''''") }}', '{{ string_text }}')[{{ part_number }}]
+    {% set safe_delimiter_text = delimiter_text | replace("'", "\'") %}
+    splitByString('{{ safe_delimiter_text }}', '{{ string_text }}')[{{ part_number }}]
 {%- endmacro %}
