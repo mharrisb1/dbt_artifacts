@@ -3,7 +3,7 @@
 {%- endmacro %}
 
 {% macro default__split_part(string_text, delimiter_text, part_number) -%}
-    {{ dbt.split_part({{ string_text }}, {{ delimiter_text }}, {{ part_number }}) }}
+    {{ dbt.split_part(string_text, delimiter_text, part_number) }}
 {%- endmacro %}
 
 {% macro clickhouse__split_part(string_text, delimiter_text, part_number) -%}
