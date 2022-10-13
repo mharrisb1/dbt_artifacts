@@ -72,10 +72,10 @@
                     '{{ test.unique_id }}', {# node_id #}
                     '{{ run_started_at }}', {# run_started_at #}
                     '{{ test.name }}', {# name #}
-                    {{ tojson(test.depends_on.nodes) }}, {# depends_on_nodes #}
+                    '{{ tojson(test.depends_on.nodes) }}', {# depends_on_nodes #}
                     '{{ test.package_name }}', {# package_name #}
                     '{{ test.original_file_path | replace('\\', '\\\\') }}', {# test_path #}
-                    {{ tojson(test.tags) }} {# tags #}
+                    '{{ tojson(test.tags) }}' {# tags #}
                 )
                 {%- if not loop.last %},{%- endif %}
             {%- endfor %}
