@@ -65,3 +65,27 @@
         {{ return("") }}
     {% endif %}
 {%- endmacro %}
+
+{% macro clickhouse__get_seeds_dml_sql(seeds) -%}
+    {% if seeds != [] %}
+        {% set seed_values %}
+            {% for seed in seeds -%}
+                (
+                    '{{ invocation_id }}', {# command_invocation_id #}
+                    '{{ seed.unique_id }}', {# node_id #}
+                    '{{ run_started_at }}', {# run_started_at #}
+                    '{{ seed.database }}', {# database #}
+                    '{{ seed.schema }}', {# schema #}
+                    '{{ seed.name }}', {# name #}
+                    '{{ seed.package_name }}', {# package_name #}
+                    '{{ seed.original_file_path | replace('\\', '\\\\') }}', {# path #}
+                    '{{ seed.checksum.checksum }}' {# checksum #}
+                )
+                {%- if not loop.last %},{%- endif %}
+            {%- endfor %}
+        {% endset %}
+        {{ seed_values }}
+    {% else %}
+        {{ return("") }}
+    {% endif %}
+{%- endmacro %}

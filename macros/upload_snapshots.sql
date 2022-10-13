@@ -72,3 +72,29 @@
         {{ return("") }}
     {% endif %}
 {%- endmacro %}
+
+{% macro clickhouse__get_snapshots_dml_sql(snapshots) -%}
+    {% if snapshots != [] %}
+        {% set snapshot_values %}
+            {% for snapshot in snapshots -%}
+                (
+                    '{{ invocation_id }}', {# command_invocation_id #}
+                    '{{ snapshot.unique_id }}', {# node_id #}
+                    '{{ run_started_at }}', {# run_started_at #}
+                    '{{ snapshot.database }}', {# database #}
+                    '{{ snapshot.schema }}', {# schema #}
+                    '{{ snapshot.name }}', {# name #}
+                    {{ tojson(snapshot.depends_on.nodes) }}, {# depends_on_nodes #}
+                    '{{ snapshot.package_name }}', {# package_name #}
+                    '{{ snapshot.original_file_path | replace('\\', '\\\\') }}', {# path #}
+                    '{{ snapshot.checksum.checksum }}', {# checksum #}
+                    '{{ snapshot.config.strategy }}' {# strategy #}
+                )
+                {%- if not loop.last %},{%- endif %}
+            {%- endfor %}
+        {% endset %}
+        {{ snapshot_values }}
+    {% else %}
+        {{ return("") }}
+    {% endif %}
+{%- endmacro %}

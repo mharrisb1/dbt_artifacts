@@ -71,3 +71,29 @@
         {{ return("") }}
     {% endif %}
 {%- endmacro %}
+
+{% macro clickhouse__get_sources_dml_sql(sources) -%}
+    {% if sources != [] %}
+        {% set source_values %}
+            {% for source in sources -%}
+                (
+                    '{{ invocation_id }}', {# command_invocation_id #}
+                    '{{ source.unique_id }}', {# node_id #}
+                    '{{ run_started_at }}', {# run_started_at #}
+                    '{{ source.database }}', {# database #}
+                    '{{ source.schema }}', {# schema #}
+                    '{{ source.source_name }}', {# source_name #}
+                    '{{ source.loader }}', {# loader #}
+                    '{{ source.name }}', {# name #}
+                    '{{ source.identifier }}', {# identifier #}
+                    '{{ source.loaded_at_field | replace("'","\\'") }}', {# loaded_at_field #}
+                    parse_json('{{ tojson(source.freshness) | replace("'","\\'") }}')  {# freshness #}
+                )
+                {%- if not loop.last %},{%- endif %}
+            {%- endfor %}
+        {% endset %}
+        {{ source_values }}
+    {% else %}
+        {{ return("") }}
+    {% endif %}
+{%- endmacro %}
