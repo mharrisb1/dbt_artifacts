@@ -136,7 +136,7 @@
             {% for env_variable in var('env_vars') %}
                 {% do env_vars_dict.update({env_variable: env_var(env_variable)}) %}
             {% endfor %}
-            {{ parse_json('{{ tojson(env_vars_dict) }}') }}, {# env_vars #}
+            '{{ tojson(env_vars_dict) }}', {# env_vars #}
         {% else %}
             null, {# env_vars #}
         {% endif %}
@@ -146,7 +146,7 @@
             {% for dbt_var in var('dbt_vars') %}
                 {% do dbt_vars_dict.update({dbt_var: var(dbt_var)}) %}
             {% endfor %}
-            parse_json('{{ tojson(dbt_vars_dict) }}') {# dbt_vars #}
+            '{{ tojson(dbt_vars_dict) }}' {# dbt_vars #}
         {% else %}
             null {# dbt_vars #}
         {% endif %}
