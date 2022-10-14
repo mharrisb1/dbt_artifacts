@@ -96,8 +96,13 @@ multiple string arguments. The {}.{} model triggered this warning. \
 
 {%- endfor -%}
 
-{#- Clickhouse is case-sensitive so we have to use `MD5` instead of `md5` -#}
+{#-
+    Clickhouse is case-sensitive so we have to use `MD5` instead of `md5`.
+    Additionally, MD5 outputs the raw bytes value which is not very human
+    readable in the warehouse. Instead, we use the hexidecimal representaion
+    of the hash.
+-#}
 
-MD5({{ concat(fields) }})
+lower(hex(MD5({{ concat(fields) }})))
 
 {%- endmacro -%}
