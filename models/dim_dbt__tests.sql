@@ -16,8 +16,7 @@ tests as (
         depends_on_nodes,
         package_name,
         test_path,
-        tags,
-        compiled_sql
+        tags
     from base
 
 )

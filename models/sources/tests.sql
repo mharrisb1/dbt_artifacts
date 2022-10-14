@@ -11,7 +11,6 @@ select
     {{ cast_null_as_type(type_array()) }} as depends_on_nodes,
     {{ cast_null_as_type(type_string()) }} as package_name,
     {{ cast_null_as_type(type_string()) }} as test_path,
-    {{ cast_null_as_type(type_array()) }} as tags,
-    {{ cast_null_as_type(type_string()) }} as compiled_sql
+    {{ cast_null_as_type(type_array()) }} as tags
 from dummy_cte
 where 1 = 0

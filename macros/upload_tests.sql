@@ -75,9 +75,7 @@
                     '{{ tojson(test.depends_on.nodes) }}', {# depends_on_nodes #}
                     '{{ test.package_name }}', {# package_name #}
                     '{{ test.original_file_path | replace("\\", "\\\\") }}', {# test_path #}
-                    '{{ tojson(test.tags) }}', {# tags #}
-                    {# Need to serialize to JSON string to avoid insertion errors #}
-                    '{{ test.compiled_sql }}' {# description #}
+                    '{{ tojson(test.tags) }}' {# tags #}
                 )
                 {%- if not loop.last %},{%- endif %}
             {%- endfor %}
