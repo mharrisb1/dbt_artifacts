@@ -107,7 +107,7 @@
                     '{{ tojson(model.config.meta) }}', {# meta #}
                     '{{ model.config.alias }}', {# alias #}
                     '{{ tojson(model.columns) | replace("'","\\'") | replace("'","\\'") }}', {# columns #}
-                    '{{ model.description | replace("'","\\'") }}' {# description #}
+                    '{{ model.description | replace("'","\\'") | replace("\\n", " ") }}' {# description #}
                 )
                 {%- if not loop.last %},{%- endif %}
             {%- endfor %}
