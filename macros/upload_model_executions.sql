@@ -242,8 +242,9 @@
 
             {{ model.execution_time }}, {# total_node_runtime #}
 
-            {% set rows_affected = model.adapter_response.rows_affected %}
-            {% if rows_affected == '' %}
+            {% if model.adapter_response.rows_affected != '' %}
+                {% set rows_affected = model.adapter_response.rows_affected %}
+            {% else %}
                 {% set rows_affected = '0' %}
             {% endif %}
             toInt64('{{ rows_affected }}'),
