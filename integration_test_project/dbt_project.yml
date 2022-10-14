@@ -29,9 +29,10 @@ vars:
 
 
 models:
+  # `alter_relation_comment` macro is not implemented for Clickhouse adapter
   +persist_docs:
-    relation: true
-    columns: true
+    relation: "{{ target.type != 'clickhouse' }}"
+    columns: "{{ target.type != 'clickhouse' }}"
 seeds:
   +quote_columns: false
 
