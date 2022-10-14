@@ -80,7 +80,7 @@
                 (
                     '{{ invocation_id }}', {# command_invocation_id #}
                     '{{ snapshot.unique_id }}', {# node_id #}
-                    '{{ run_started_at }}', {# run_started_at #}
+                    '{{ run_started_at.strftime('%Y-%m-%d %H:%M:%S') }}', {# run_started_at #}
                     '{{ snapshot.database }}', {# database #}
                     '{{ snapshot.schema }}', {# schema #}
                     '{{ snapshot.name }}', {# name #}

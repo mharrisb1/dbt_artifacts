@@ -85,7 +85,7 @@
                 (
                     '{{ invocation_id }}', {# command_invocation_id #}
                     '{{ model.unique_id }}', {# node_id #}
-                    '{{ run_started_at }}', {# run_started_at #}
+                    '{{ run_started_at.strftime('%Y-%m-%d %H:%M:%S') }}', {# run_started_at #}
                     '{{ model.database }}', {# database #}
                     '{{ model.schema }}', {# schema #}
                     '{{ model.name }}', {# name #}

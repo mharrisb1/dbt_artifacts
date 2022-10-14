@@ -117,7 +117,7 @@
         '{{ invocation_id }}', {# command_invocation_id #}
         '{{ dbt_version }}', {# dbt_version #}
         '{{ project_name }}', {# project_name #}
-        '{{ run_started_at }}', {# run_started_at #}
+        '{{ run_started_at.strftime('%Y-%m-%d %H:%M:%S') }}', {# run_started_at #}
         '{{ flags.WHICH }}', {# dbt_command #}
         {{ flags.FULL_REFRESH }}, {# full_refresh_flag #}
         '{{ target.profile_name }}', {# target_profile_name #}

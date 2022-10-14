@@ -82,7 +82,7 @@
                 (
                     '{{ invocation_id }}', {# command_invocation_id #}
                     '{{ exposure.unique_id | replace("'","\\'") }}', {# node_id #}
-                    '{{ run_started_at }}', {# run_started_at #}
+                    '{{ run_started_at.strftime('%Y-%m-%d %H:%M:%S') }}', {# run_started_at #}
                     '{{ exposure.name | replace("'","\\'") }}', {# name #}
                     '{{ exposure.type }}', {# type #}
                     '{{ tojson(exposure.owner) | replace("\'","\\'") }}', {# owner #}

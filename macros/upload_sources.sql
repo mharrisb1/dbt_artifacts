@@ -79,7 +79,7 @@
                 (
                     '{{ invocation_id }}', {# command_invocation_id #}
                     '{{ source.unique_id }}', {# node_id #}
-                    '{{ run_started_at }}', {# run_started_at #}
+                    '{{ run_started_at.strftime('%Y-%m-%d %H:%M:%S') }}', {# run_started_at #}
                     '{{ source.database }}', {# database #}
                     '{{ source.schema }}', {# schema #}
                     '{{ source.source_name }}', {# source_name #}

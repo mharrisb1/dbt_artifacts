@@ -70,7 +70,7 @@
                 (
                     '{{ invocation_id }}', {# command_invocation_id #}
                     '{{ test.unique_id }}', {# node_id #}
-                    '{{ run_started_at }}', {# run_started_at #}
+                    '{{ run_started_at.strftime('%Y-%m-%d %H:%M:%S') }}', {# run_started_at #}
                     '{{ test.name }}', {# name #}
                     '{{ tojson(test.depends_on.nodes) }}', {# depends_on_nodes #}
                     '{{ test.package_name }}', {# package_name #}

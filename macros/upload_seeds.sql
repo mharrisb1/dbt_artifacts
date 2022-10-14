@@ -73,7 +73,7 @@
                 (
                     '{{ invocation_id }}', {# command_invocation_id #}
                     '{{ seed.unique_id }}', {# node_id #}
-                    '{{ run_started_at }}', {# run_started_at #}
+                    '{{ run_started_at.strftime('%Y-%m-%d %H:%M:%S') }}', {# run_started_at #}
                     '{{ seed.database }}', {# database #}
                     '{{ seed.schema }}', {# schema #}
                     '{{ seed.name }}', {# name #}

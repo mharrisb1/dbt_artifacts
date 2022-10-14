@@ -133,7 +133,7 @@
             (
                 '{{ invocation_id }}', {# command_invocation_id #}
                 '{{ test.node.unique_id }}', {# node_id #}
-                '{{ run_started_at }}', {# run_started_at #}
+                '{{ run_started_at.strftime('%Y-%m-%d %H:%M:%S') }}', {# run_started_at #}
 
                 {% set config_full_refresh = test.node.config.full_refresh %}
                 {% if config_full_refresh is none %}
