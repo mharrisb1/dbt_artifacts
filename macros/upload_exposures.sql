@@ -85,13 +85,13 @@
                     '{{ run_started_at }}', {# run_started_at #}
                     '{{ exposure.name | replace("'","\\'") }}', {# name #}
                     '{{ exposure.type }}', {# type #}
-                    {{ parse_json('{{ tojson(exposure.owner) | replace("'","\\'") }}') }}, {# owner #}
+                    '{{ tojson(exposure.owner) | replace("\'","\\'") }}', {# owner #}
                     '{{ exposure.maturity }}', {# maturity #}
                     '{{ exposure.original_file_path | replace('\\', '\\\\') }}', {# path #}
-                    """{{ exposure.description | replace("'","\\'") }}""", {# description #}
+                    '{{ exposure.description | replace("'","\\'") }}', {# description #}
                     '{{ exposure.url }}', {# url #}
                     '{{ exposure.package_name }}', {# package_name #}
-                    {{ tojson(exposure.depends_on.nodes) }} {# depends_on_nodes #}
+                    '{{ tojson(exposure.depends_on.nodes) }}' {# depends_on_nodes #}
                 )
                 {%- if not loop.last %},{%- endif %}
             {%- endfor %}
