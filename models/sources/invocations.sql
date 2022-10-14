@@ -8,7 +8,7 @@ select
     {{ cast_null_as_type(type_string()) }} as dbt_version,
     {{ cast_null_as_type(type_string()) }} as project_name,
     {{ cast_null_as_type(type_timestamp()) }} as run_started_at,
-    {{ cast_null_as_type(type_timestamp()) }} as dbt_command,
+    {{ cast_null_as_type(type_string()) }} as dbt_command,
     {{ cast_null_as_type(type_boolean()) }} as full_refresh_flag,
     {{ cast_null_as_type(type_string()) }} as target_profile_name,
     {{ cast_null_as_type(type_string()) }} as target_name,

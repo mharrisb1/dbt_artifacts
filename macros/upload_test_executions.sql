@@ -139,7 +139,7 @@
                 {% if config_full_refresh is none %}
                     {% set config_full_refresh = flags.FULL_REFRESH %}
                 {% endif %}
-                {{ config_full_refresh }}, {# was_full_refresh #}
+                {{ config_full_refresh | int }}, {# was_full_refresh #}
 
                 '{{ test.thread_id }}', {# thread_id #}
                 '{{ test.status }}', {# status #}
@@ -149,7 +149,7 @@
                         {% if loop.length == 0 %}
                             null, {# compile_started_at #}
                         {% else %}
-                            '{{ stage.started_at }}', {# compile_started_at #}
+                            '{{ stage.started_at.strftime('%Y-%m-%d %H:%M:%S') }}', {# compile_started_at #}
                         {% endif %}
                     {% endfor %}
 
@@ -157,7 +157,7 @@
                         {% if loop.length == 0 %}
                             null, {# query_completed_at #}
                         {% else %}
-                            '{{ stage.completed_at }}', {# query_completed_at #}
+                            '{{ stage.completed_at.strftime('%Y-%m-%d %H:%M:%S') }}', {# query_completed_at #}
                         {% endif %}
                     {% endfor %}
                 {% else %}

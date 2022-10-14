@@ -119,7 +119,7 @@
         '{{ project_name }}', {# project_name #}
         '{{ run_started_at.strftime('%Y-%m-%d %H:%M:%S') }}', {# run_started_at #}
         '{{ flags.WHICH }}', {# dbt_command #}
-        {{ flags.FULL_REFRESH }}, {# full_refresh_flag #}
+        {{ flags.FULL_REFRESH | int }}, {# full_refresh_flag #}
         '{{ target.profile_name }}', {# target_profile_name #}
         '{{ target.name }}', {# target_name #}
         '{{ target.schema }}', {# target_schema #}
