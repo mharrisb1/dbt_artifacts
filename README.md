@@ -3,12 +3,13 @@ This package builds a mart of tables and views describing the project it is inst
 
 ## Supported Data Warehouses
 
-The package currently supports 
+The package currently supports
 
 - Databricks :white_check_mark:
 - Spark :white_check_mark:
 - Snowflake adapters :white_check_mark:
 - Google BigQuery :white_check_mark:
+- Clickhouse 🤷‍♀️
 
 Models included:
 
