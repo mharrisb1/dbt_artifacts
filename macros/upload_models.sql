@@ -103,7 +103,7 @@
                     '{{ tojson(model.tags) }}', {# tags #}
                     '{{ tojson(model.config.meta) }}', {# meta #}
                     '{{ model.config.alias }}', {# alias #}
-                    '{{ tojson(model.columns) }}' {# columns #}
+                    '{{ tojson(model.columns) | replace("'","\\'") }}' {# columns #}
                 )
                 {%- if not loop.last %},{%- endif %}
             {%- endfor %}
