@@ -106,8 +106,9 @@
                     '{{ tojson(model.tags) }}', {# tags #}
                     '{{ tojson(model.config.meta) }}', {# meta #}
                     '{{ model.config.alias }}', {# alias #}
-                    '{{ tojson(model.columns) | replace("'","\\'") | replace("'","\\'") }}', {# columns #}
-                    '{{ model.description | replace("'","\\'") | replace("\\n", " ") }}' {# description #}
+                    '{{ tojson(model.columns) | replace("'","\\'") }}', {# columns #}
+                    {# Need to serialize to JSON string to avoid insertion errors #}
+                    '{{ tojson({"value": model.description}) | replace("'","\\'") }}' {# description #}
                 )
                 {%- if not loop.last %},{%- endif %}
             {%- endfor %}
