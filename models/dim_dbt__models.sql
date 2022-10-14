@@ -23,7 +23,8 @@ models as (
         tags,
         meta,
         alias,
-        columns
+        columns,
+        description
     from base
 
 )

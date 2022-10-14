@@ -48,3 +48,5 @@ models:
     description: '{{ doc("alias") }}'
   - name: columns
     description: '{{ doc("columns") }}'
+  - name: description
+    description: '{{ doc("description") }}'
