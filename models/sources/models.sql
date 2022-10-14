@@ -16,6 +16,8 @@ select
     {{ cast_null_as_type(type_string()) }} as checksum,
     {{ cast_null_as_type(type_string()) }} as materialization,
     {{ cast_null_as_type(type_array()) }} as tags,
-    {{ cast_null_as_type(type_json()) }} as meta
+    {{ cast_null_as_type(type_json()) }} as meta,
+    {{ cast_null_as_type(type_string()) }} as alias,
+    {{ cast_null_as_type(type_string()) }} as columns
 from dummy_cte
 where 1 = 0

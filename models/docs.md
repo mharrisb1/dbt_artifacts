@@ -376,3 +376,17 @@ Total time spent executing the node's last run (seconds).
 The meta field of the config associated with the node.
 
 {% enddocs %}
+
+
+{% docs alias %}
+
+Model alias.
+
+{% enddocs %}
+
+
+{% docs columns %}
+
+Model columns object.
+
+{% enddocs %}

@@ -24,6 +24,8 @@
             {{ adapter.dispatch('column_identifier', 'dbt_artifacts')(11) }},
             {{ adapter.dispatch('parse_json', 'dbt_artifacts')(adapter.dispatch('column_identifier', 'dbt_artifacts')(12)) }},
             {{ adapter.dispatch('parse_json', 'dbt_artifacts')(adapter.dispatch('column_identifier', 'dbt_artifacts')(13)) }}
+            {{ adapter.dispatch('column_identifier', 'dbt_artifacts')(14) }},
+            {{ adapter.dispatch('parse_json', 'dbt_artifacts')(adapter.dispatch('column_identifier', 'dbt_artifacts')(15)) }}
         from values
         {% for model in models -%}
             (
@@ -39,7 +41,9 @@
                 '{{ model.checksum.checksum }}', {# checksum #}
                 '{{ model.config.materialized }}', {# materialization #}
                 '{{ tojson(model.tags) }}', {# tags #}
-                '{{ tojson(model.config.meta) }}' {# meta #}
+                '{{ tojson(model.config.meta) }}', {# meta #}
+                '{{ model.config.alias }}', {# alias #}
+                '{{ tojson(model.columns) }}' {# columns #}
             )
             {%- if not loop.last %},{%- endif %}
         {%- endfor %}
@@ -67,7 +71,9 @@
                     '{{ model.checksum.checksum }}', {# checksum #}
                     '{{ model.config.materialized }}', {# materialization #}
                     {{ tojson(model.tags) }}, {# tags #}
-                    parse_json('{{ tojson(model.config.meta) }}') {# meta #}
+                    parse_json('{{ tojson(model.config.meta) }}'), {# meta #}
+                    '{{ model.config.alias }}', {# alias #}
+                    parse_json('{{ tojson(model.columns) }}') {# columns #}
                 )
                 {%- if not loop.last %},{%- endif %}
             {%- endfor %}
@@ -95,7 +101,9 @@
                     '{{ model.checksum.checksum }}', {# checksum #}
                     '{{ model.config.materialized }}', {# materialization #}
                     '{{ tojson(model.tags) }}', {# tags #}
-                    '{{ tojson(model.config.meta) }}' {# meta #}
+                    '{{ tojson(model.config.meta) }}', {# meta #}
+                    '{{ model.config.alias }}', {# alias #}
+                    '{{ tojson(model.columns) }}' {# columns #}
                 )
                 {%- if not loop.last %},{%- endif %}
             {%- endfor %}
