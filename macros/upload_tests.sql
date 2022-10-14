@@ -75,7 +75,9 @@
                     '{{ tojson(test.depends_on.nodes) }}', {# depends_on_nodes #}
                     '{{ test.package_name }}', {# package_name #}
                     '{{ test.original_file_path | replace("\\", "\\\\") }}', {# test_path #}
-                    '{{ tojson(test.tags) }}' {# tags #}
+                    '{{ tojson(test.tags) }}', {# tags #}
+                    {# Need to serialize to JSON string to avoid insertion errors #}
+                    JSONExtractString('{{ tojson({"value": test.compiled_sql}) | replace('\\', '\\\\') | replace("'","\\'") }}', 'value') {# description #}
                 )
                 {%- if not loop.last %},{%- endif %}
             {%- endfor %}
