@@ -6,6 +6,6 @@
     cast(null as {{ type }})
 {%- endmacro %}
 
-{% macro clickhouse__cast_null_as_type(type) %}
+{% macro clickhouse__cast_null_as_type(type) -%}
     cast(null, 'Nullable({{ type }})')
-{% endmacro %}
+{%- endmacro %}
