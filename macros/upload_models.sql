@@ -44,8 +44,8 @@
                 '{{ tojson(model.tags) }}', {# tags #}
                 '{{ tojson(model.config.meta) }}', {# meta #}
                 '{{ model.config.alias }}', {# alias #}
-                '{{ tojson(model.columns) }}', {# columns #}
-                '{{ model.description }}' {# description #}
+                '{{ tojson(model.columns) | replace("'","\\'") }}', {# columns #}
+                '{{ model.description | replace("'","\\'") }}' {# description #}
             )
             {%- if not loop.last %},{%- endif %}
         {%- endfor %}
@@ -75,8 +75,8 @@
                     {{ tojson(model.tags) }}, {# tags #}
                     parse_json('{{ tojson(model.config.meta) }}'), {# meta #}
                     '{{ model.config.alias }}', {# alias #}
-                    parse_json('{{ tojson(model.columns) }}'), {# columns #}
-                    '{{ model.description }}' {# description #}
+                    parse_json('{{ tojson(model.columns) | replace("'","\\'") }}'), {# columns #}
+                    '{{ model.description | replace("'","\\'") }}' {# description #}
                 )
                 {%- if not loop.last %},{%- endif %}
             {%- endfor %}
@@ -106,8 +106,8 @@
                     '{{ tojson(model.tags) }}', {# tags #}
                     '{{ tojson(model.config.meta) }}', {# meta #}
                     '{{ model.config.alias }}', {# alias #}
-                    '{{ tojson(model.columns) | replace("'","\\'") }}', {# columns #}
-                    '{{ model.description }}' {# description #}
+                    '{{ tojson(model.columns) | replace("'","\\'") | replace("'","\\'") }}', {# columns #}
+                    '{{ model.description | replace("'","\\'") }}' {# description #}
                 )
                 {%- if not loop.last %},{%- endif %}
             {%- endfor %}
