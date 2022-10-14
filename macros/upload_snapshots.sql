@@ -84,7 +84,7 @@
                     '{{ snapshot.database }}', {# database #}
                     '{{ snapshot.schema }}', {# schema #}
                     '{{ snapshot.name }}', {# name #}
-                    {{ tojson(snapshot.depends_on.nodes) }}, {# depends_on_nodes #}
+                    '{{ tojson(snapshot.depends_on.nodes) }}', {# depends_on_nodes #}
                     '{{ snapshot.package_name }}', {# package_name #}
                     '{{ snapshot.original_file_path | replace('\\', '\\\\') }}', {# path #}
                     '{{ snapshot.checksum.checksum }}', {# checksum #}
