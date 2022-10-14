@@ -108,7 +108,7 @@
                     '{{ model.config.alias }}', {# alias #}
                     '{{ tojson(model.columns) | replace("'","\\'") }}', {# columns #}
                     {# Need to serialize to JSON string to avoid insertion errors #}
-                    JSONExtractString('{{ tojson({"value": model.description}) | replace("'","\\'") | replace('\\', '\\\\') }}', 'value') {# description #}
+                    JSONExtractString('{{ tojson({"value": model.description}) | replace('\\', '\\\\') | replace("'","\\'") }}', 'value') {# description #}
                 )
                 {%- if not loop.last %},{%- endif %}
             {%- endfor %}
