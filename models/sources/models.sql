@@ -18,7 +18,7 @@ select
     {{ cast_null_as_type(type_array()) }} as tags,
     {{ cast_null_as_type(type_json()) }} as meta,
     {{ cast_null_as_type(type_string()) }} as alias,
-    {{ cast_null_as_type(type_string()) }} as columns,
+    {{ cast_null_as_type(type_json()) }} as columns,
     {{ cast_null_as_type(type_string()) }} as description
 from dummy_cte
 where 1 = 0
