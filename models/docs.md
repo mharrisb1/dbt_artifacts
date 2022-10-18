@@ -394,3 +394,9 @@ Model columns object.
 Compiled SQL for node.
 
 {% enddocs %}
+
+{% docs invocation_args %}
+
+Key-value pairs of args passed to invocation.
+
+{% enddocs %}

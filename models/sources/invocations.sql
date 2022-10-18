@@ -20,6 +20,7 @@ select
     {{ cast_null_as_type(type_string()) }} as dbt_cloud_run_reason_category,
     {{ cast_null_as_type(type_string()) }} as dbt_cloud_run_reason,
     {{ cast_null_as_type(type_json()) }} as env_vars,
-    {{ cast_null_as_type(type_json()) }} as dbt_vars
+    {{ cast_null_as_type(type_json()) }} as dbt_vars,
+    {{ cast_null_as_type(type_json()) }} as invocation_args
 from dummy_cte
 where 1 = 0
