@@ -21,7 +21,10 @@ models as (
         checksum,
         materialization,
         tags,
-        meta
+        meta,
+        alias,
+        columns,
+        description
     from base
 
 )

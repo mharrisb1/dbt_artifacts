@@ -53,7 +53,7 @@ latest_model_stats as (
         {% endif %}
     from latest_models_runs
     where run_idx = 1
-    group by 1
+    group by node_id
 ),
 
 final as (

@@ -13,3 +13,7 @@
 {% macro spark__column_identifier(column_index) -%}
     col{{ column_index }}
 {%- endmacro %}
+
+{% macro clickhouse__column_identifier(column_index) %}
+    c{{ column_index }}
+{% endmacro %}

@@ -377,6 +377,24 @@ The meta field of the config associated with the node.
 
 {% enddocs %}
 
+{% docs alias %}
+
+Model alias.
+
+{% enddocs %}
+
+{% docs columns %}
+
+Model columns object.
+
+{% enddocs %}
+
+{% docs compiled_sql %}
+
+Compiled SQL for node.
+
+{% enddocs %}
+
 {% docs invocation_args %}
 
 Key-value pairs of args passed to invocation.

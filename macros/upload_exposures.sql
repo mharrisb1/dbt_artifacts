@@ -74,3 +74,30 @@
         {{ return("") }}
     {% endif %}
 {%- endmacro %}
+
+{% macro clickhouse__get_exposures_dml_sql(exposures) -%}
+    {% if exposures != [] %}
+        {% set exposure_values %}
+            {% for exposure in exposures -%}
+                (
+                    '{{ invocation_id }}', {# command_invocation_id #}
+                    '{{ exposure.unique_id | replace("'","\\'") }}', {# node_id #}
+                    '{{ run_started_at.strftime('%Y-%m-%d %H:%M:%S') }}', {# run_started_at #}
+                    '{{ exposure.name | replace("'","\\'") }}', {# name #}
+                    '{{ exposure.type }}', {# type #}
+                    '{{ tojson(exposure.owner) | replace("\'","\\'") }}', {# owner #}
+                    '{{ exposure.maturity }}', {# maturity #}
+                    '{{ exposure.original_file_path | replace('\\', '\\\\') }}', {# path #}
+                    '{{ exposure.description | replace("'","\\'") }}', {# description #}
+                    '{{ exposure.url }}', {# url #}
+                    '{{ exposure.package_name }}', {# package_name #}
+                    '{{ tojson(exposure.depends_on.nodes) }}' {# depends_on_nodes #}
+                )
+                {%- if not loop.last %},{%- endif %}
+            {%- endfor %}
+        {% endset %}
+        {{ exposure_values }}
+    {% else %}
+        {{ return("") }}
+    {% endif %}
+{%- endmacro %}

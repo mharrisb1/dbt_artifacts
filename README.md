@@ -3,12 +3,13 @@ This package builds a mart of tables and views describing the project it is inst
 
 ## Supported Data Warehouses
 
-The package currently supports 
+The package currently supports
 
 - Databricks :white_check_mark:
 - Spark :white_check_mark:
 - Snowflake adapters :white_check_mark:
 - Google BigQuery :white_check_mark:
+- Clickhouse 🤷‍♀️
 
 Models included:
 
@@ -133,6 +134,7 @@ To migrate your existing data from the `dbt-artifacts` versions <=0.8.0, a helpe
 4. Manually delete any database objects (sources, staging models, tables/views) from the previous `dbt-artifacts` version.
 
 The arguments for `migrate_from_v0_to_v1` are as follows:
+
 | argument     	| description                                              	|
 |--------------	|----------------------------------------------------------	|
 | `old_database` 	| the database of the <1.0.0 output (`fct_`/`dim_`) models 	|
