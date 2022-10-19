@@ -24,7 +24,8 @@ models as (
         meta,
         alias,
         columns,
-        description
+        description,
+        config
     from base
 
 )
